@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Simple TODO API
+  version: 1.0.0
+paths:
+  /todos:
+    get:
+      summary: Get TODO items
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                - id: "1"
+                  item: "Learn Go"
+                  completed: false
+                - id: "2"
+                  item: "Learn AWS"
+                  completed: false
+                # Add more examples for other TODO items
+    post:
+      summary: Add a new TODO item
+      requestBody:
+        required: true
+        content:
+          application/json:  # Media type
+              schema:          # Must-have
+                type: object   # Data type
+                properties: 
+                  id:
+                    type: string
+                  item:
+                    type: string
+                  completed: 
+                    type: boolean
+      responses:
+        '201':
+          description: TODO item added successfully
+          content:
+            application/json:
+              example:
+                id: "5"
+                item: "New Task"
+                completed: false
